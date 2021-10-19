@@ -142,6 +142,29 @@ class SinglyLinkedList{
             this.get(index).val = val; 
             return true; 
         }
+    }
+
+    insert(index, val){
+         /**
+         * Adds a node to the Linked List
+         * at a specific given position
+         */
+        if(index < 0 || index > this.length){
+            return false; 
+        }else if(index == this.length){
+            this.push(val); 
+            return true; 
+        }else if(index == 0){
+            this.unshift(val); 
+            return true; 
+        }else{
+            let prevNode = this.get(index-1);
+            let temp = prevNode.next;
+            prevNode.next = new Node(val);
+            prevNode.next.next = temp;
+            this.length ++;
+            return true; 
+        }
 
     }
 }
@@ -149,8 +172,11 @@ class SinglyLinkedList{
 let list = new SinglyLinkedList();
 //list.push('A'); 
 //list.push('B'); 
-let iter = 100; 
+let iter = 3; 
 for(let i=0;i<iter;i++){
     list.push(`A_${i}`);
-
 } 
+
+list.insert(1, 'Amore mio!'); 
+console.log(list.get(1));
+console.log(list); 
