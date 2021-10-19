@@ -123,12 +123,26 @@ class SinglyLinkedList{
             while(currentNode){
                 
                 if(counter == index){
-                    return currentNode.val; 
+                    return currentNode; 
                 }
                 currentNode = currentNode.next; 
                 counter++;
             }
         }
+    }
+
+    set(index, val){
+        /**
+         * Changes the value of a node based on 
+         * its position in the Linked List
+         */
+        if(!this.get(index)){
+            return false; 
+        }else{
+            this.get(index).val = val; 
+            return true; 
+        }
+
     }
 }
 
@@ -140,6 +154,3 @@ for(let i=0;i<iter;i++){
     list.push(`A_${i}`);
 
 } 
-
-console.log(list); 
-console.log(list.get(99)); 
