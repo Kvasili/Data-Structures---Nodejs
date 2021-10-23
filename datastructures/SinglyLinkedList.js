@@ -176,11 +176,19 @@ class SinglyLinkedList{
         if(index < 0 || index >= this.length){
             return undefined;
         }
-        if(index == this.length-1){
-            this.pop()
+        else if(index == this.length-1){
+            this.pop();
         }
-             
+        else if(index == 0){
+            this.shift();
+        }else{
+            var prevNode = this.get(index-1);
+            var removedNode = this.get(index);
+            prevNode.next = removedNode.next; 
+            this.length--; 
 
+            return removedNode; 
+        }
     }
 }
 
@@ -192,6 +200,12 @@ for(let i=0;i<iter;i++){
     list.push(`A_${i}`);
 } 
 
-list.insert(1, 'Amore mio!'); 
-console.log(list.get(1));
+console.log(list);
+list.remove(0); 
 console.log(list); 
+
+
+///////////////////////////////////////////////////
+/**
+ * node SinglyLinkedList.js
+ */
