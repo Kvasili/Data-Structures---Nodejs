@@ -167,6 +167,21 @@ class SinglyLinkedList{
         }
 
     }
+
+    remove(index){
+        /**
+         * removes a node from the list at a 
+         * specific position
+         */
+        if(index < 0 || index >= this.length){
+            return undefined;
+        }
+        if(index == this.length-1){
+            this.pop()
+        }
+             
+
+    }
 }
 
 let list = new SinglyLinkedList();
