@@ -1,9 +1,14 @@
 /**
+ * @Author Konstantinos Vasili
+ * @Date October 2021
+ * 
+ * 
+ * USAGE
  * node SinglyLinkedList.js
  */
 class Node{
     constructor(val){
-        this.val = val; //this refers to the instance created by the class
+        this.val = val; //this --> refers to the instance created by the class
         this.next = null; 
     }
 }
@@ -16,7 +21,9 @@ class SinglyLinkedList{
     }
 
     push(val){
-        /**adds a new node to the list */ 
+        /**
+         * Adds a new node to the list 
+         * */ 
         let newNode = new Node(val);
         if(this.head == null){
             // if there are no nodes on the list
@@ -33,17 +40,9 @@ class SinglyLinkedList{
 
     }
 
-    traverse(){
-        let currentItem = this.head;
-        while(currentItem){
-            console.log(currentItem.val);
-            currentItem = currentItem.next; 
-        }
-    }
-
     pop(){
         /**
-         * removes the last node from the list
+         * Removes the last node from the list
          * 
          */
         if(!this.head){
@@ -75,7 +74,7 @@ class SinglyLinkedList{
 
     shift(){
         /**
-         * removes a new node from the beginning of the List
+         * Removes a new node from the beginning of the List
          */
         if(!this.head){
             //console.log('undefined'); 
@@ -93,7 +92,7 @@ class SinglyLinkedList{
 
     unshift(val){
         /**
-         * adds a new node at the beginning of the list
+         * Adds a new node at the beginning of the list
          */
         let newNode = new Node(val); 
         if(this.head == null){
@@ -170,7 +169,7 @@ class SinglyLinkedList{
 
     remove(index){
         /**
-         * removes a node from the list at a 
+         * Removes a node from the list at a 
          * specific position
          */
         if(index < 0 || index >= this.length){
@@ -190,19 +189,45 @@ class SinglyLinkedList{
             return removedNode; 
         }
     }
+
+    reverse(){
+        /**
+         * Reverses the List in place
+         */
+        if(!this.head){
+            
+            return undefined;
+        }
+
+        let currentNode = this.head;
+        this.head = this.tail;
+        this.tail = currentNode;  
+        let next ;
+        let prev = null; 
+        
+        for(let i = 0;i<this.length; i++){
+ 
+            next = currentNode.next; 
+            currentNode.next = prev;
+            prev = currentNode;
+            currentNode = next; 
+
+        }
+
+        return this; 
+    }
+
+    traverse(){
+        /**
+         * Loops through all elements of List
+         */
+        let currentItem = this.head;
+        while(currentItem){
+            console.log(currentItem.val);
+            currentItem = currentItem.next; 
+        }
+    }
 }
-
-let list = new SinglyLinkedList();
-//list.push('A'); 
-//list.push('B'); 
-let iter = 3; 
-for(let i=0;i<iter;i++){
-    list.push(`A_${i}`);
-} 
-
-console.log(list);
-list.remove(0); 
-console.log(list); 
 
 
 ///////////////////////////////////////////////////
