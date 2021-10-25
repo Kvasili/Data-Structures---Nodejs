@@ -229,6 +229,18 @@ class SinglyLinkedList{
     }
 }
 
+let list = new SinglyLinkedList();
+//list.push('A'); 
+//list.push('B'); 
+let iter = 1000; 
+for(let i=0;i<iter;i++){
+    list.push(`A_${i}`);
+} 
+
+console.log(list);
+list.reverse();
+console.log(list);
+console.log(list.traverse()); 
 
 ///////////////////////////////////////////////////
 /**
