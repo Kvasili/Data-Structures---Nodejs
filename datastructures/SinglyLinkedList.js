@@ -5,6 +5,7 @@
  * 
  * USAGE
  * node SinglyLinkedList.js
+ * 
  */
 class Node{
     constructor(val){
@@ -195,7 +196,6 @@ class SinglyLinkedList{
          * Reverses the List in place
          */
         if(!this.head){
-            
             return undefined;
         }
 
@@ -204,9 +204,8 @@ class SinglyLinkedList{
         this.tail = currentNode;  
         let next ;
         let prev = null; 
-        
-        for(let i = 0;i<this.length; i++){
- 
+    
+        while(currentNode){
             next = currentNode.next; 
             currentNode.next = prev;
             prev = currentNode;
@@ -219,7 +218,7 @@ class SinglyLinkedList{
 
     traverse(){
         /**
-         * Loops through all elements of List
+         * Loops through all elements of the List
          */
         let currentItem = this.head;
         while(currentItem){
@@ -240,7 +239,7 @@ for(let i=0;i<iter;i++){
 console.log(list);
 list.reverse();
 console.log(list);
-console.log(list.traverse()); 
+//console.log(list.traverse()); 
 
 ///////////////////////////////////////////////////
 /**
