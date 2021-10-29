@@ -40,16 +40,39 @@ class DoublyLinkedList{
         return this; 
     }
 
+    pop(){
+        /**
+         * Removes a node from the end of the Doubly Linked List
+         */
+        if(!this.tail) return undefined; 
+        else{
+            let currentTail = this.tail;
+
+            if(this.length == 1) {
+                this.head = null;
+                this.tail = null; 
+            }else{
+                currentTail.previous = this.tail; 
+                this.tail.next = null; 
+                currentTail.previous = null; 
+            }
+            this.length -- ; 
+            return currentTail; 
+        }
+    }
 }
 
 let list = new DoublyLinkedList();
 
-let iter = 30; 
+let iter = 20; 
 for(let i=0;i<iter;i++){
     list.push(`A_${i}`);
 } 
 
 console.log(list);
+list.pop();
+console.log(list);
+
 
 ///////////////////////////////////////////////////
 /**
