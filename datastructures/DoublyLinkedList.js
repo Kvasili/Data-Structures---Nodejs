@@ -11,7 +11,8 @@
     constructor(val){
         this.val = val; //this --> refers to the instance created by the class
         this.next = null;
-        this.prev = null;  
+        this.prev = null;
+        //this.other = [];   
     }
 }
 
@@ -52,27 +53,104 @@ class DoublyLinkedList{
                 this.head = null;
                 this.tail = null; 
             }else{
-                currentTail.previous = this.tail; 
+                this.tail = currentTail.prev; 
                 this.tail.next = null; 
-                currentTail.previous = null; 
+                currentTail.prev = null; 
             }
             this.length -- ; 
             return currentTail; 
         }
     }
+
+    shift(){
+        /**
+         * Removes a node from the beginning of the list
+         */
+        if(!this.head) return undefined; 
+        else{
+            let currentHead = this.head;
+
+            if(this.length === 1) {
+                this.head = null;
+                this.tail = null; 
+            }else{
+
+                this.head = currentHead.next;
+                this.head.prev = null;
+                currentHead.next = null;
+                
+            }
+            
+            this.length --; 
+            return currentHead; 
+        }
+       
+    }
+
+    unshift(val){
+        /**
+         * Adds a node to the beginning of the list
+         */
+         let newNode = new Node(val);
+         if(!this.head){
+             this.head = newNode;
+             this.tail = newNode; 
+         }else{
+             let currentHead = this.head;
+             this.head = newNode; 
+             currentHead.prev = this.head;
+             this.head.next = currentHead; 
+         }
+ 
+         this.length ++ ;
+         return this; 
+       
+    }
+
+    get(index){
+        /**
+         * Accesses a node in a Doubly Linked List by its position
+         */
+        if(index < 0 || index >= this.length) return null;
+        else{
+            if(this.length-index>this.length/2){
+                let counter = 0; 
+                let currentNode = this.head;
+                while(currentNode){
+                    if(counter == index){
+                        return currentNode; 
+                    }
+                    currentNode = currentNode.next; 
+                    counter++; 
+                }
+            }else{
+                let counter = this.length-1;
+                let currentNode = this.tail;
+                while(currentNode){
+                    if(counter == index){
+                        return currentNode;
+                    }
+                    currentNode = currentNode.prev;
+                    counter --; 
+                }
+
+            }
+        }
+       
+    }
+    
 }
 
 let list = new DoublyLinkedList();
 
-let iter = 20; 
+let iter = 1000000; 
 for(let i=0;i<iter;i++){
     list.push(`A_${i}`);
 } 
 
-console.log(list);
-list.pop();
-console.log(list);
+//console.log(list);
 
+console.log(list.get(999999));
 
 ///////////////////////////////////////////////////
 /**
