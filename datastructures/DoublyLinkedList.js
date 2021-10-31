@@ -113,7 +113,8 @@ class DoublyLinkedList{
          */
         if(index < 0 || index >= this.length) return null;
         else{
-            if(this.length-index>this.length/2){
+            if(this.length-index>=this.length/2){
+                console.log("WORKING FROM START.")
                 let counter = 0; 
                 let currentNode = this.head;
                 while(currentNode){
@@ -124,6 +125,7 @@ class DoublyLinkedList{
                     counter++; 
                 }
             }else{
+                console.log("WORKING FROM END.")
                 let counter = this.length-1;
                 let currentNode = this.tail;
                 while(currentNode){
@@ -143,14 +145,14 @@ class DoublyLinkedList{
 
 let list = new DoublyLinkedList();
 
-let iter = 1000000; 
+let iter = 100; 
 for(let i=0;i<iter;i++){
     list.push(`A_${i}`);
 } 
 
 //console.log(list);
 
-console.log(list.get(999999));
+console.log(list.get(50));
 
 ///////////////////////////////////////////////////
 /**
