@@ -185,48 +185,27 @@ class DoublyLinkedList{
      * Removes a node from the list at a 
      * specific position
      */
-    if(index < 0 || index >= this.length){
-        return undefined;
-    }
-    else if(index == this.length-1){
-        return this.pop();
-    }
-    else if(index == 0){
-        return this.shift();
-    }else{
-        var prevNode = this.get(index-1);
-        var removedNode = prevNode.next; 
-        prevNode.next = removedNode.next;
-        removedNode.next.prev = prevNode;  
-        this.length--; 
+        if(index < 0 || index >= this.length){
+            return undefined;
+        }
+        else if(index == this.length-1){
+            return this.pop();
+        }
+        else if(index == 0){
+            return this.shift();
+        }else{
+            var prevNode = this.get(index-1);
+            var removedNode = prevNode.next; 
+            prevNode.next = removedNode.next;
+            removedNode.next.prev = prevNode;  
+            this.length--; 
 
-        removedNode.next = null;
-        removedNode.prev = null; 
-        return removedNode; 
+            removedNode.next = null;
+            removedNode.prev = null; 
+            return removedNode; 
+        }
     }
-}
     
 }
 
 let list = new DoublyLinkedList();
-
-// let iter = 5; 
-// for(let i=0;i<iter;i++){
-//     list.push(`A_${i}`);
-// }
-
-list.push("Harry");
-list.push('Ron');
-list.push('Hermione'); 
-console.log(list); // 1 BTC ≈ 52.339.77
-
-
-
-console.log(list.remove(0));
-
-console.log(list);
-
-///////////////////////////////////////////////////
-/**
- * node DoublyLinkedList.js
- */
