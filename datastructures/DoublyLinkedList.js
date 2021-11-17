@@ -205,7 +205,68 @@ class DoublyLinkedList{
             return removedNode; 
         }
     }
+
+    reverse(){
+        /**
+         * Reverses the List in place
+         */
+        if(!this.head){
+            return undefined;
+        }
+
+        if(this.length === 1){
+
+            let tmp = this.tail;
+            this.tail = this.head;
+            this.head = tmp; 
+
+        }
+        
+        let currentNode = this.head;
+        let tmp; 
+
+        while(currentNode){
+            /**Swap next and prev for all nodes */
+            tmp = currentNode.prev;
+            currentNode.prev = currentNode.next;
+            currentNode.next = tmp;
+            currentNode = currentNode.prev ;
+        }
+
+        if (tmp != null) {
+            this.head = tmp.prev;
+        }
+
+        return this; 
+    }
+
+    traverse(){
+        /**
+         * Loops through all elements of the List
+         */
+        let currentItem = this.head;
+        while(currentItem){
+            console.log(currentItem.val);
+            currentItem = currentItem.next; 
+        }
+    }
     
 }
 
 let list = new DoublyLinkedList();
+list.push('A'); 
+list.push('B');
+list.push('C');
+list.traverse();  
+console.log("**************"); 
+list.reverse();
+list.traverse(); 
+
+/**
+ * @Author Konstantinos Vasili
+ * @Date October 2021
+ * 
+ * 
+ * USAGE
+ * node DoublyLinkedList.js
+ */
