@@ -33,29 +33,29 @@ class BinarySearchTree{
 
         if(!this.root){
             this.root = newNode; 
-        }else{
-            let currentNode = this.root; 
-            while(true){
-                if(val < currentNode.value){
-                    if(currentNode.left === null){
-                        currentNode.left = newNode; 
-                        return this; 
-                    }else{
-                        currentNode = currentNode.left;
-                    }
-                }else if(val > currentNode.value){
-                    if(currentNode.right === null){
-                        currentNode.right = newNode; 
-                        return this; 
-                    }else{
-                        currentNode = currentNode.right;
-                    }
-                }else{
-                    console.log("Duplicates are not supported!"); 
-                    return this;  
+            return this; 
+        }
+        
+        let currentNode = this.root; 
+        while(true){
+            if(val < currentNode.value){
+                if(currentNode.left === null){
+                    currentNode.left = newNode; 
+                    return this; 
                 }
+                currentNode = currentNode.left;
+            }else if(val > currentNode.value){
+                if(currentNode.right === null){
+                    currentNode.right = newNode; 
+                    return this; 
+                }
+                currentNode = currentNode.right;
+            }else{
+                console.log("Duplicates are not supported!"); 
+                return this;  
             }
         }
+        
     }
 }
 
@@ -69,7 +69,7 @@ function between(min, max) {
 // console.log(between(0, 10));
 let tree = new BinarySearchTree();
 
-for(let i=0;i<10;i++){
+for(let i=0;i<100;i++){
     tree.insert( between(0, 1000)); 
 }
 
