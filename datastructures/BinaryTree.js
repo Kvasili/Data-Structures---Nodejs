@@ -25,22 +25,55 @@ class Node{
 
 class BinarySearchTree{
     constructor(){
-        this.root = null;    
+        this.root = null; //pertains to a node    
+    }
+
+    insert(val){
+        let newNode = new Node(val); 
+
+        if(!this.root){
+            this.root = newNode; 
+        }else{
+            let currentNode = this.root; 
+            while(true){
+                if(val < currentNode.value){
+                    if(currentNode.left === null){
+                        currentNode.left = newNode; 
+                        return this; 
+                    }else{
+                        currentNode = currentNode.left;
+                    }
+                }else if(val > currentNode.value){
+                    if(currentNode.right === null){
+                        currentNode.right = newNode; 
+                        return this; 
+                    }else{
+                        currentNode = currentNode.right;
+                    }
+                }else{
+                    console.log("Duplicates are not supported!"); 
+                    return this;  
+                }
+            }
+        }
     }
 }
 
+function between(min, max) {  
+    return Math.floor(
+      Math.random() * (max - min) + min
+    )
+  }
 
 
+// console.log(between(0, 10));
 let tree = new BinarySearchTree();
-tree.root = new Node(45); 
-tree.root.right = new Node(34);
-tree.root.left = new Node(56); 
-tree.root.left.left = new Node(89);
 
+for(let i=0;i<10;i++){
+    tree.insert( between(0, 1000)); 
+}
 
 console.log(tree); 
-
-
 
 
 /**
