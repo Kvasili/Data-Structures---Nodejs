@@ -9,7 +9,7 @@
  * Evey node to the right of a parent node is always greater than the parent
  * 
  * USAGE
- * node BinaryTree.js
+ * node BinarySearchTree.js
  * 
  */
 
