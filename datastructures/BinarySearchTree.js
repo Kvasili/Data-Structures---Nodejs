@@ -39,12 +39,14 @@ class BinarySearchTree{
         let currentNode = this.root; 
         while(true){
             if(val < currentNode.value){
+                // insert the new node to the left
                 if(currentNode.left === null){
                     currentNode.left = newNode; 
                     return this; 
                 }
                 currentNode = currentNode.left;
             }else if(val > currentNode.value){
+                // insert the new node to the right
                 if(currentNode.right === null){
                     currentNode.right = newNode; 
                     return this; 
@@ -57,27 +59,57 @@ class BinarySearchTree{
         }
         
     }
+
+    find(val){
+
+        if(!this.root){
+            return null; 
+        }
+
+        let currentNode = this.root;
+
+        while(true){
+
+            if(currentNode.value === val){
+                return currentNode; 
+            }   
+            else if(val < currentNode.value){
+                if(currentNode.left){
+                    currentNode = currentNode.left; 
+                }else{
+                    return "Value does not exist"; 
+                }
+                
+            }
+            else if(val > currentNode.value){
+                if(currentNode.right){
+                    currentNode = currentNode.right; 
+                }else{
+                    return "Value does not exist"; 
+                }
+            }
+        } 
+    }
 }
 
-function between(min, max) {  
-    return Math.floor(
-      Math.random() * (max - min) + min
-    )
-  }
 
-
-// console.log(between(0, 10));
 let tree = new BinarySearchTree();
+tree.insert(10);
+tree.insert(12);
+tree.insert(9);
+tree.insert(13);
+tree.insert(6);
+tree.insert(90);
 
-for(let i=0;i<100;i++){
-    tree.insert( between(0, 1000)); 
-}
 
-console.log(tree); 
+
+//console.log(tree); 
+
+console.log(tree.find(90));
 
 
 /**
  * USAGE
- * node BinaryTree.js
+ * node BinarySearchTree.js
  * 
  */
