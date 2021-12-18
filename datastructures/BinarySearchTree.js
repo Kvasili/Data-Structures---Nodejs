@@ -101,10 +101,3 @@ tree.insert(9);
 //console.log(tree); 
 
 console.log(tree.find(9));
-
-
-/**
- * USAGE
- * node BinarySearchTree.js
- * 
- */
