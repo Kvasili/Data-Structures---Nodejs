@@ -97,15 +97,10 @@ let tree = new BinarySearchTree();
 tree.insert(10);
 tree.insert(12);
 tree.insert(9);
-tree.insert(13);
-tree.insert(6);
-tree.insert(90);
-
-
 
 //console.log(tree); 
 
-console.log(tree.find(90));
+console.log(tree.find(9));
 
 
 /**
