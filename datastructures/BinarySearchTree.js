@@ -90,14 +90,57 @@ class BinarySearchTree{
             }
         } 
     }
+
+    BFS_Traverse(){
+        /**
+         * Method for visiting eveyr single Node using the 
+         * Breadth First Search (BFS) approach.
+         * Every node is visited horizontally
+         *
+         * */
+        let node = this.root; 
+        let queue = [];
+        let visitedNode = [];
+        
+        queue.push = node; 
+        while(queue.length){
+            
+            node = queue.shift();
+            visitedNode.push(node.val); 
+            if(node.left){ queue.push(node.left); }
+
+            if(node.right){ queue.push(node.right); }
+            
+        }
+
+        return visitedNode.length; 
+    }
 }
 
 
 let tree = new BinarySearchTree();
 tree.insert(10);
-tree.insert(12);
-tree.insert(9);
+tree.insert(6);
+tree.insert(15);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
 
-//console.log(tree); 
+console.log(tree); 
 
-console.log(tree.find(9));
+console.log(tree.BFS_Traverse());
+
+/**
+ * @Author Konstantinos Vasili
+ * @Date November 2021
+ * 
+ * Implementation of a Binary Tree
+ * Every parent node has at most two children
+ * 
+ * Every node to the left of a parent node is always less than the parent
+ * Evey node to the right of a parent node is always greater than the parent
+ * 
+ * USAGE
+ * node BinarySearchTree.js
+ * 
+ */
