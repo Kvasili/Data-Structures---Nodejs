@@ -102,18 +102,21 @@ class BinarySearchTree{
         let queue = [];
         let visitedNode = [];
         
-        queue.push = node; 
+        queue.push(node); 
+        
         while(queue.length){
             
             node = queue.shift();
-            visitedNode.push(node.val); 
+            //console.log(node);
+            visitedNode.push(node.value); 
+            
             if(node.left){ queue.push(node.left); }
 
             if(node.right){ queue.push(node.right); }
             
         }
 
-        return visitedNode.length; 
+        return visitedNode; 
     }
 }
 
@@ -126,20 +129,11 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(20);
 
-console.log(tree); 
+//console.log(tree); 
 
 console.log(tree.BFS_Traverse());
 
 /**
- * @Author Konstantinos Vasili
- * @Date November 2021
- * 
- * Implementation of a Binary Tree
- * Every parent node has at most two children
- * 
- * Every node to the left of a parent node is always less than the parent
- * Evey node to the right of a parent node is always greater than the parent
- * 
  * USAGE
  * node BinarySearchTree.js
  * 
